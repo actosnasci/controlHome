@@ -1,5 +1,6 @@
 -- USE BASE_HOMOLOGACAO;
 
+
 CREATE TABLE COMPRA_INDIVIDUAL(
 	Id_compra_individual int(8) auto_increment,
 	Descricao_produto varchar(30) not null,
@@ -16,9 +17,9 @@ CREATE TABLE COMPRA_INDIVIDUAL(
     entrada enum('JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'),
 	mod_pagamento enum('A VISTA','CARTAO DE CREDITO','BOLETO','A PRAZO'),
 CONSTRAINT PRIMARY KEY (Id_compra_individual),
-CONSTRAINT FK_COMPRA_INDIVIDUAL_REGISTRO_PRODUTO FOREIGN KEY (Descricao_produto) REFERENCES REGISTRO_PRODUTO (Descricao_produto),
-CONSTRAINT FK_COMPRA_INDIVIDUAL_CATEGORIA FOREIGN KEY (Nome_categoria) REFERENCES CATEGORIA (Nome_categoria),
-CONSTRAINT FK_COMPRA_INDIVIDUAL_MERCADO FOREIGN KEY (Nome_mercado) REFERENCES MERCADO (Nome_mercado)
+CONSTRAINT FK_COMPRA_INDIVIDUAL_TO_REGISTRO_PRODUTO FOREIGN KEY (Descricao_produto) REFERENCES REGISTRO_PRODUTO (Descricao_produto),
+CONSTRAINT FK_COMPRA_INDIVIDUAL_TO_CATEGORIA FOREIGN KEY (Nome_categoria) REFERENCES CATEGORIA (Nome_categoria),
+CONSTRAINT FK_COMPRA_INDIVIDUAL_TOMERCADO FOREIGN KEY (Nome_mercado) REFERENCES MERCADO (Nome_mercado)
 );
 
 INSERT INTO COMPRA_INDIVIDUAL(Descricao_produto,quantidade,valor,Data_compra,nome_mercado,nome_categoria,cidade,local,ecomerce,parcelado,parcelas,entrada,mod_pagamento)
